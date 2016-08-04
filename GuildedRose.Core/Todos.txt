@@ -2,6 +2,7 @@
 -----
 
 [x] subclasses
-[ ] remote sell in decrement logic from update quality method (feels to side-effecty)
+[ ] remove sell in decrement logic from update quality method (feels to side-effecty)
 [ ] better encapsulation of item in item wrapper
+[ ] remove constants
 [ ] add conjured item type
