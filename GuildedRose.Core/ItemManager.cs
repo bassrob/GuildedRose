@@ -15,11 +15,11 @@ namespace GuildedRose.Core
         {
             foreach (var item in this.Items)
             {
-                if (item.Name != Constants.INCREASING && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name != Constants.INCREASING && item.Name != Constants.BACKSTAGE_PASS)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
+                        if (item.Name != Constants.LEGENDARY)
                         {
                             item.Quality--;
                         }
@@ -31,7 +31,7 @@ namespace GuildedRose.Core
                     {
                         item.Quality++;
 
-                        if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                        if (item.Name == Constants.BACKSTAGE_PASS)
                         {
                             if (item.SellIn < 11)
                             {
@@ -52,7 +52,7 @@ namespace GuildedRose.Core
                     }
                 }
 
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                if (item.Name != Constants.LEGENDARY)
                 {
                     item.SellIn--;
                 }
@@ -61,11 +61,11 @@ namespace GuildedRose.Core
                 {
                     if (item.Name != Constants.INCREASING)
                     {
-                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                        if (item.Name != Constants.BACKSTAGE_PASS)
                         {
                             if (item.Quality > 0)
                             {
-                                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                                if (item.Name != Constants.LEGENDARY)
                                 {
                                     item.Quality--;
                                 }
