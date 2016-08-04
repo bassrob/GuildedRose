@@ -1,4 +1,5 @@
 ﻿using GuildedRose.Core;
+using GuildedRose.Core.ItemWrappers;
 using NUnit.Framework;
 
 namespace GuildedRose.Test.Items
@@ -6,8 +7,6 @@ namespace GuildedRose.Test.Items
     [TestFixture]
     public class AgedBrieTests : BaseTests
     {
-        protected override string ItemType { get { return Constants.INCREASING; } }
-
         [TestCase(10, 10, 11, 9)]
         [TestCase(10, 1, 11, 0)]
         public void AgedBrie_IncreasesWithAge_WhenSellInIsPositive(
@@ -16,7 +15,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(10, 0, 12, -1)]
@@ -27,7 +26,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(48, 0, 50, -1)]
@@ -41,7 +40,17 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
+        }
+
+        protected override BaseItemWrapper CreateItemWrapper(int quality, int sellIn)
+        {
+            return new IncreasingItemWrapper(new Item
+            {
+                Name = Constants.INCREASING,
+                Quality = quality,
+                SellIn = sellIn,
+            });
         }
     }
 }

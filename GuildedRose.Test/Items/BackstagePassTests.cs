@@ -1,14 +1,12 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using GuildedRose.Core;
+using GuildedRose.Core.ItemWrappers;
 
 namespace GuildedRose.Test.Items
 {
     [TestFixture]
     public class BackstagePassTests : BaseTests
     {
-        protected override string ItemType { get { return Constants.BACKSTAGE_PASS; } }
-
         [TestCase(10, 11, 11, 10)]
         [TestCase(10, 12, 11, 11)]
         public void BackstagePasses_IncreasesWithAge_WhenSellInIsGreaterThan11(
@@ -17,7 +15,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(10, 10, 12, 9)]
@@ -28,7 +26,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(10, 5, 13, 4)]
@@ -39,7 +37,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(10, 0, 0, -1)]
@@ -49,7 +47,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(0, -1, 0, -2)]
@@ -59,7 +57,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(49, 11, 50, 10)]
@@ -77,7 +75,17 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
+        }
+
+        protected override BaseItemWrapper CreateItemWrapper(int quality, int sellIn)
+        {
+            return new BackstagePassItemWrapper(new Item
+            {
+                Name = Constants.BACKSTAGE_PASS,
+                Quality = quality,
+                SellIn = sellIn,
+            });
         }
     }
 }

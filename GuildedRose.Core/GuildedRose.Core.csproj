@@ -43,10 +43,16 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
+    <Compile Include="ItemWrappers\BackstagePassItemWrapper.cs" />
+    <Compile Include="ItemWrappers\OtherItemWrapper.cs" />
+    <Compile Include="ItemWrappers\LegendaryItemWrapper.cs" />
+    <Compile Include="ItemWrappers\IncreasingItemWrapper.cs" />
+    <Compile Include="ItemWrappers\BaseItemWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Rules.txt" />
+    <Content Include="Todos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

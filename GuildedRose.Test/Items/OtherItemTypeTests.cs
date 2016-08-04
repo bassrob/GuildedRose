@@ -1,14 +1,12 @@
 ﻿using GuildedRose.Core;
+using GuildedRose.Core.ItemWrappers;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace GuildedRose.Test.Items
 {
     [TestFixture]
     public class OtherItemTypeTests : BaseTests
     {
-        protected override string ItemType { get { return Constants.OTHER; } }
-
         [TestCase(1, 1, 0, 0)]
         [TestCase(10, 1, 9, 0)]
         public void OtherItems_Decrease(
@@ -17,7 +15,7 @@ namespace GuildedRose.Test.Items
             int expectedQuality,
             int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(10, 0, 8, -1)]
@@ -28,7 +26,7 @@ namespace GuildedRose.Test.Items
             int expectedQuality,
             int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(1, -1, 0, -2)]
@@ -40,7 +38,17 @@ namespace GuildedRose.Test.Items
             int expectedQuality,
             int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
+        }
+
+        protected override BaseItemWrapper CreateItemWrapper(int quality, int sellIn)
+        {
+            return new OtherItemWrapper(new Item
+            {
+                Name = Constants.OTHER,
+                Quality = quality,
+                SellIn = sellIn,
+            });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GuildedRose.Core;
+using GuildedRose.Core.ItemWrappers;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -6,16 +7,12 @@ namespace GuildedRose.Test.Items
 {
     public abstract class BaseTests
     {
-        protected virtual void PerformTests(
-            int quality,
-            int sellIn,
+        protected virtual void PerformTest(
+            BaseItemWrapper itemWrapper,
             int expectedQuality,
             int expectedSellIn)
         {
-            var manager = new ItemManager(new List<Item>
-            {
-                new Item { Name = this.ItemType, Quality = quality, SellIn = sellIn, },
-            });
+            var manager = new ItemManager(new List<BaseItemWrapper> { itemWrapper });
 
             manager.UpdateQuality();
 
@@ -23,6 +20,6 @@ namespace GuildedRose.Test.Items
             Assert.AreEqual(expectedSellIn, manager.Items[0].SellIn);
         }
 
-        protected abstract string ItemType { get; }
+        protected abstract BaseItemWrapper CreateItemWrapper(int quality, int sellIn);
     }
 }

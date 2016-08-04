@@ -1,4 +1,5 @@
 ﻿using GuildedRose.Core;
+using GuildedRose.Core.ItemWrappers;
 using NUnit.Framework;
 
 namespace GuildedRose.Test.Items
@@ -6,8 +7,6 @@ namespace GuildedRose.Test.Items
     [TestFixture]
     public class SufurasTests : BaseTests
     {
-        protected override string ItemType { get { return Constants.LEGENDARY; } }
-
         [TestCase(80, 10, 80, 10)]
         [TestCase(80, 1, 80, 1)]
         [TestCase(80, 0, 80, 0)]
@@ -20,7 +19,7 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
         [TestCase(80, 10, 80, 10)]
@@ -35,7 +34,17 @@ namespace GuildedRose.Test.Items
                int expectedQuality,
                int expectedSellIn)
         {
-            this.PerformTests(quality, sellIn, expectedQuality, expectedSellIn);
+            this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
+        }
+
+        protected override BaseItemWrapper CreateItemWrapper(int quality, int sellIn)
+        {
+            return new LegendaryItemWrapper(new Item
+            {
+                Name = Constants.LEGENDARY,
+                Quality = quality,
+                SellIn = sellIn,
+            });
         }
     }
 }
