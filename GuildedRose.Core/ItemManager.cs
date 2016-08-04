@@ -11,78 +11,101 @@ namespace GuildedRose.Core
             this.Items = Items;
         }
 
-        public void UpdateQuality()
+        private void UpdateIncreasing(Item item)
         {
-            foreach (var item in this.Items)
+            if (item.Quality < 50)
             {
-                if (item.Name != Constants.INCREASING && item.Name != Constants.BACKSTAGE_PASS)
+                item.Quality++;
+            }
+
+            item.SellIn--;
+
+            if (item.SellIn < 0)
+            {
+                if (item.Quality < 50)
                 {
-                    if (item.Quality > 0)
-                    {
-                        if (item.Name != Constants.LEGENDARY)
-                        {
-                            item.Quality--;
-                        }
-                    }
+                    item.Quality++;
                 }
-                else
+            }
+        }
+
+        private void UpdateBackstagePass(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality++;
+
+                if (item.Name == Constants.BACKSTAGE_PASS)
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
-
-                        if (item.Name == Constants.BACKSTAGE_PASS)
-                        {
-                            if (item.SellIn < 11)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality++;
-                                }
-                            }
-
-                            if (item.SellIn < 6)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality++;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (item.Name != Constants.LEGENDARY)
-                {
-                    item.SellIn--;
-                }
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Name != Constants.INCREASING)
-                    {
-                        if (item.Name != Constants.BACKSTAGE_PASS)
-                        {
-                            if (item.Quality > 0)
-                            {
-                                if (item.Name != Constants.LEGENDARY)
-                                {
-                                    item.Quality--;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            item.Quality = 0;
-                        }
-                    }
-                    else
+                    if (item.SellIn < 11)
                     {
                         if (item.Quality < 50)
                         {
                             item.Quality++;
                         }
                     }
+
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < 50)
+                        {
+                            item.Quality++;
+                        }
+                    }
+                }
+            }
+
+            item.SellIn--;
+
+            if (item.SellIn < 0)
+            {
+                if (item.Name != Constants.INCREASING)
+                {
+                    item.Quality = 0;
+                }
+            }
+        }
+
+        public void UpdateLegendary(Item item)
+        {
+        }
+
+        public void UpdateOther(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality--;
+            }
+
+            item.SellIn--;
+
+            if (item.SellIn < 0)
+            {
+                if (item.Quality > 0)
+                {
+                    item.Quality--;
+                }
+            }
+        }
+
+        public void UpdateQuality()
+        {
+            foreach (var item in this.Items)
+            {
+                switch (item.Name)
+                {
+                    case Constants.INCREASING:
+                        UpdateIncreasing(item);
+                        break;
+                    case Constants.BACKSTAGE_PASS:
+                        UpdateBackstagePass(item);
+                        break;
+                    case Constants.LEGENDARY:
+                        UpdateLegendary(item);
+                        break;
+                    default:
+                        UpdateOther(item);
+                        break;
                 }
             }
         }
