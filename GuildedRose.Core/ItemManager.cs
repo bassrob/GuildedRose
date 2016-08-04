@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GuildedRose.Core
 {
@@ -13,56 +14,38 @@ namespace GuildedRose.Core
 
         private void UpdateIncreasing(Item item)
         {
-            if (item.Quality < 50)
-            {
-                item.Quality++;
-            }
-
+            item.Quality++;
             item.SellIn--;
 
             if (item.SellIn < 0)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality++;
-                }
+                item.Quality++;
             }
+
+            item.Quality = Math.Min(item.Quality, 50);
         }
 
         private void UpdateBackstagePass(Item item)
         {
-            if (item.Quality < 50)
+            if (item.SellIn < 6)
+            {
+                item.Quality += 3;
+            }
+            else if (item.SellIn < 11)
+            {
+                item.Quality += 2;
+            }
+            else
             {
                 item.Quality++;
-
-                if (item.Name == Constants.BACKSTAGE_PASS)
-                {
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality++;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality++;
-                        }
-                    }
-                }
             }
 
             item.SellIn--;
+            item.Quality = Math.Min(item.Quality, 50);
 
             if (item.SellIn < 0)
             {
-                if (item.Name != Constants.INCREASING)
-                {
-                    item.Quality = 0;
-                }
+                item.Quality = 0;
             }
         }
 
@@ -72,20 +55,15 @@ namespace GuildedRose.Core
 
         public void UpdateOther(Item item)
         {
-            if (item.Quality > 0)
-            {
-                item.Quality--;
-            }
-
+            item.Quality--;
             item.SellIn--;
 
             if (item.SellIn < 0)
             {
-                if (item.Quality > 0)
-                {
-                    item.Quality--;
-                }
+                item.Quality--;
             }
+
+            item.Quality = Math.Max(item.Quality, 0);
         }
 
         public void UpdateQuality()
