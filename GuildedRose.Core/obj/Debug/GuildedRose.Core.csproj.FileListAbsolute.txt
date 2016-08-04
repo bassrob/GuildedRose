@@ -1,0 +1,5 @@
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Core\bin\Debug\GuildedRose.Core.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Core\bin\Debug\GuildedRose.Core.pdb
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Core\obj\Debug\GuildedRose.Core.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Core\obj\Debug\GuildedRose.Core.pdb
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Core\obj\Debug\GuildedRose.Core.csprojResolveAssemblyReference.cache

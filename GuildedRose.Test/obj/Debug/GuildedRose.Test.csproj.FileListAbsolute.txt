@@ -1,0 +1,10 @@
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\GuildedRose.Test.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\GuildedRose.Test.pdb
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\GuildedRose.Core.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\GuildedRose.Core.pdb
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\obj\Debug\GuildedRose.Test.csprojResolveAssemblyReference.cache
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\obj\Debug\GuildedRose.Test.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\obj\Debug\GuildedRose.Test.pdb
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\nunit.framework.dll
+C:\dev\dotnet\katas\GuildedRose2\GuildedRose.Test\bin\Debug\nunit.framework.xml
