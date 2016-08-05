@@ -44,7 +44,8 @@
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
     <Compile Include="ItemWrappers\BackstagePassItemWrapper.cs" />
-    <Compile Include="ItemWrappers\OtherItemWrapper.cs" />
+    <Compile Include="ItemWrappers\ConjuredItemWrapper.cs" />
+    <Compile Include="ItemWrappers\NormalItemWrapper.cs" />
     <Compile Include="ItemWrappers\LegendaryItemWrapper.cs" />
     <Compile Include="ItemWrappers\IncreasingItemWrapper.cs" />
     <Compile Include="ItemWrappers\BaseItemWrapper.cs" />

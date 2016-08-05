@@ -3,3 +3,5 @@
 ################################################################################
 
 /GuildedRose.Core/obj/Debug
+/GuildedRose.Test/obj/Debug
+/GuildedRose.Test/bin/Debug

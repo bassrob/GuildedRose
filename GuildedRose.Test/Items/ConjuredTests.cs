@@ -1,15 +1,15 @@
-﻿using GuildedRose.Core;
-using GuildedRose.Core.ItemWrappers;
+﻿using GuildedRose.Core.ItemWrappers;
 using NUnit.Framework;
+using GuildedRose.Core;
 
 namespace GuildedRose.Test.Items
 {
     [TestFixture]
-    public class OtherItemTypeTests : BaseTests
+    public class ConjuredTests : BaseTests
     {
         [TestCase(1, 1, 0, 0)]
-        [TestCase(10, 1, 9, 0)]
-        public void OtherItems_Decrease(
+        [TestCase(10, 1, 8, 0)]
+        public void NormalItems_Decrease(
             int quality,
             int sellIn,
             int expectedQuality,
@@ -18,9 +18,9 @@ namespace GuildedRose.Test.Items
             this.PerformTest(this.CreateItemWrapper(quality, sellIn), expectedQuality, expectedSellIn);
         }
 
-        [TestCase(10, 0, 8, -1)]
-        [TestCase(10, -1, 8, -2)]
-        public void OtherItems_Decrease2x_IfSellInIsNegative(
+        [TestCase(10, 0, 6, -1)]
+        [TestCase(10, -1, 6, -2)]
+        public void NormalItems_Decrease2x_IfSellInIsNegative(
             int quality,
             int sellIn,
             int expectedQuality,
@@ -32,7 +32,7 @@ namespace GuildedRose.Test.Items
         [TestCase(1, -1, 0, -2)]
         [TestCase(0, -1, 0, -2)]
         [TestCase(1, 1, 0, 0)]
-        public void OtherItems_DoNotGoBelow0(
+        public void NormalItems_DoNotGoBelow0(
             int quality,
             int sellIn,
             int expectedQuality,
@@ -43,9 +43,9 @@ namespace GuildedRose.Test.Items
 
         protected override BaseItemWrapper CreateItemWrapper(int quality, int sellIn)
         {
-            return new OtherItemWrapper(new Item
+            return new ConjuredItemWrapper(new Item
             {
-                Name = Constants.OTHER,
+                Name = Constants.CONJURED,
                 Quality = quality,
                 SellIn = sellIn,
             });

@@ -2,21 +2,21 @@
 
 namespace GuildedRose.Core.ItemWrappers
 {
-    public class OtherItemWrapper : BaseItemWrapper
+    public class ConjuredItemWrapper : BaseItemWrapper
     {
-        public OtherItemWrapper(Item item)
+        public ConjuredItemWrapper(Item item)
             : base(item)
         {
         }
 
         public override void UpdateQuality()
         {
-            this.Quality--;
+            this.Quality -= 2;
             this.SellIn--;
 
             if (this.SellIn < 0)
             {
-                this.Quality--;
+                this.Quality -= 2;
             }
 
             this.Quality = Math.Max(this.Quality, 0);

@@ -53,7 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Items\OtherItemTypeTests.cs" />
+    <Compile Include="Items\ConjuredTests.cs" />
+    <Compile Include="Items\NormalItemTypeTests.cs" />
     <Compile Include="Items\SulfurasTests.cs" />
     <Compile Include="Items\AgedBrieTests.cs" />
     <Compile Include="Items\BackstagePassTests.cs" />

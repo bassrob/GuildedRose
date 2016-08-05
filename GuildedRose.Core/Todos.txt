@@ -5,3 +5,4 @@
 [ ] remote sell in decrement logic from update quality method (feels to side-effecty)
 [ ] better encapsulation of item in item wrapper
 [ ] add conjured item type
+[ ] there are only 3 logical steps to everything, so use the composite pattern to achieve pluggability
