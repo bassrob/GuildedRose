@@ -2,7 +2,9 @@
 -----
 
 [x] subclasses
-[ ] remote sell in decrement logic from update quality method (feels to side-effecty)
+[ ] remove sell in decrement logic from update quality method (feels to side-effecty)
 [ ] better encapsulation of item in item wrapper
 [ ] add conjured item type
 [ ] there are only 3 logical steps to everything, so use the composite pattern to achieve pluggability
+[ ] remove constants
+[ ] add pluggability via Command-like pattern (think of class explosion if loads of additional item types are added)
